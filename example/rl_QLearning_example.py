@@ -11,7 +11,7 @@ from src.icn_gym import *
 
 ## Global Parameters
 actions = ["xy", "random_oblivious", "turn_model_oblivious", "turn_model_adaptive"]
-a_size = len(actions) # space size of action
+a_size = len(actions) # space size of action: routing method
 Q = defaultdict(lambda: np.zeros(a_size)) # Q-Table
 dicts = defaultdict(list)
 action_index = random.randint(0, 100)%2
@@ -26,11 +26,11 @@ eps_decay = 0.999
 
 ### Plot Notebooks
 time_history = []
-rew_history = []
+rew_history = []  # reward
 Q = defaultdict(lambda: np.zeros(a_size))
 
 for i_episode in range(1, total_episodes+1):
-	state = 0.1 # = Injection_rate as reset state env.reset()
+	state = 0.1 # = Injection_rate as reset state env.reset() 注入率 injection rate
 	# state = np.reshape(state, [1, iter_step]) # iter_step = state_size
 	rewardsum = 0
 	# dicts = ICN_env(state, action) # ICM simulate()
@@ -38,10 +38,10 @@ for i_episode in range(1, total_episodes+1):
 		# if not done: # Env-Game on going
 		# get epsilon-greedy action probabilities
 		next_state = state + 0.1 # get next state
-		policy_s = epsilon_greedy_probs(Q[next_state], i_episode)
+		policy_s = epsilon_greedy_probs(Q[next_state], i_episode) # i_episode进行的回合数,求abs(policy_c)
 		action_index = np.random.choice(np.arange(a_size), p = abs(policy_s))
 		action = actions[action_index]
-		dicts = ICN_env(state, action)
+		dicts = ICN_env(state, action) # 计算dicts
 		reward = reward_f(dicts) # get reward from original action
 		rewardsum += reward # Sum of Reward for this episode
 		if epsilon > eps_min: epsilon *= eps_decay
