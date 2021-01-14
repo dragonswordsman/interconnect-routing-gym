@@ -10,7 +10,7 @@ import csv #表格文件，数据以分隔符隔开，按行读取
 from src.icn_gym import *
 
 ## Global Parameters
-actions = ["xy", "random_oblivious", "turn_model_oblivious", "turn_model_adaptive"]
+actions = ["xy", "random", "west_first", "adaptive_random","adaptive_west_first"]
 a_size = len(actions) # space size of action=4
 Q = defaultdict(lambda: np.zeros(a_size)) # Q-Table 2d
 dicts = defaultdict(list) #https://www.cnblogs.com/herbert/archive/2013/01/09/2852843.html 调用方式dicts[a].append=b, for a,b in Q
