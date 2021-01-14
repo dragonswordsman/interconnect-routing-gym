@@ -1,9 +1,9 @@
 # inconnect-routing-gym
+* 不同的routing-algorithm
+* openai-gym
 
-ACM/IEEE NoCS, Oct. 2019
-[Arxiv](https://arxiv.org/abs/1908.04484)
+论文出处: ACM/IEEE NoCS, Oct. 2019 [Arxiv](https://arxiv.org/abs/1908.04484)
 
-openai-gym style RL benchmark for interconnection network congestion control study
 
 [CompArch - gem5/garnet tutorial](http://tusharkrishna.ece.gatech.edu/teaching/garnet_gt/)
 
@@ -11,33 +11,23 @@ openai-gym style RL benchmark for interconnection network congestion control stu
 
 <img src="https://github.com/huckiyang/inconnect-routing-gym/blob/master/ok_1.png" width="400">
 
-### Environment Setup
-
-```"shell"
-$sudo apt-get install g++
-$sudo apt-get install python
-$sudo apt-get install python-dev
-$sudo apt-get install swig
-$sudo apt-get install zlib
-$sudo apt-get install m4
-
-```
 
 ### Downloading gem5
 
-Official gem5 from [google git](https://gem5.googlesource.com/)
-
+使用的gem5版本
 ```
+sudo apt install mercurial
 hg clone /nethome/tkrishna3/teaching/simulators/gem5/repo/gem5
 ```
-
-- ``hg status`` shows what files have been modified in your repository
-
-- ``hg diff`` shows a diff of the modified files.
+该地址无法找到,使用另一个链接
+```
+git clone https://dragonswordsman@bitbucket.org/synergy-lab/gem5_gt.git
+```
 
 ### How to use it
 Import the module in the src directry
-* It provides integration with Garnet2.0 in gem5 with the custom-defined RL-alagirithm 
+* It provides integration with Garnet2.0 in gem5 with the custom-defined RL-alagirithm
+* gem5和RL的接口文件`icn_gym`
 ```"python"
 from icn_gym import ICN_env as ir_gym
 ```
